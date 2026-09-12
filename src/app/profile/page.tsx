@@ -70,30 +70,31 @@ export default async function ProfilePage() {
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto space-y-8">
         
-        <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
-          <div className="md:grid md:grid-cols-3 md:gap-6">
-            <div className="md:col-span-1">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">Official Identity</h3>
-              <p className="mt-1 text-sm text-gray-500">
-                This information comes from the master registry and cannot be changed here.
-              </p>
+        <div className="bg-white shadow overflow-hidden sm:rounded-lg mb-8 border border-gray-200">
+          <div className="px-4 py-5 sm:px-6 flex justify-between items-center">
+            <div>
+              <h3 className="text-lg leading-6 font-medium text-gray-900">Academic Identity</h3>
+              <p className="mt-1 max-w-2xl text-sm text-gray-500">Official registry details.</p>
             </div>
-            <div className="mt-5 md:mt-0 md:col-span-2">
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Full Name</label>
-                  <div className="mt-1 p-2 bg-gray-100 rounded-md text-gray-900">
-                    {profile.identity_registry?.full_name}
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Student ID</label>
-                  <div className="mt-1 p-2 bg-gray-100 rounded-md text-gray-900">
-                    {profile.identity_registry?.student_id}
-                  </div>
-                </div>
+            {profile.avatar_url && (
+              <img src={profile.avatar_url} alt="Profile Avatar" className="w-16 h-16 rounded-full object-cover border" />
+            )}
+          </div>
+          <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
+            <dl className="sm:divide-y sm:divide-gray-200">
+              <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">Full Name</dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{Array.isArray(profile.identity_registry) ? profile.identity_registry[0]?.full_name : (profile.identity_registry as any)?.full_name}</dd>
               </div>
-            </div>
+              <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">Student ID</dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{Array.isArray(profile.identity_registry) ? profile.identity_registry[0]?.student_id : (profile.identity_registry as any)?.student_id}</dd>
+              </div>
+              <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">Academic Status</dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 uppercase">{Array.isArray(profile.identity_registry) ? profile.identity_registry[0]?.academic_status : (profile.identity_registry as any)?.academic_status}</dd>
+              </div>
+            </dl>
           </div>
         </div>
 

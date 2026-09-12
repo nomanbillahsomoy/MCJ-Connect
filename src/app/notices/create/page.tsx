@@ -36,7 +36,7 @@ export default async function CreateNoticePage() {
         </div>
 
         <div className="bg-white shadow sm:rounded-lg border border-gray-200 p-6 sm:p-8">
-          <form action={createNotice} className="space-y-6">
+          <form action={createNotice as any} className="space-y-6">
             <div>
               <label htmlFor="title" className="block text-sm font-medium text-gray-700">
                 Notice Title

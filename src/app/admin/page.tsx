@@ -106,7 +106,7 @@ export default async function AdminDashboard() {
               </p>
             </div>
             
-            <PendingClaims claims={pendingClaims || []} />
+            <PendingClaims claims={(pendingClaims as any) || []} />
           </section>
 
           {/* Role Management Section */}
